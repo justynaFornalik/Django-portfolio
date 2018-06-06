@@ -1,5 +1,7 @@
 from django.db import models
 
-from .models import Job
-
-admin.site.register(Job)
+class Blog(models.Model):
+    title =models.CharField(max_length=255)
+    pubDate =models.DateTimeField()
+    body = models.TextField()
+    image = models.ImageField(upload_to='images/')
