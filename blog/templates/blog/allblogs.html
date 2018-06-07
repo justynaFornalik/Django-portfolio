@@ -1,9 +1,7 @@
 
 <!doctype html>
 <html lang="en">
-
   <head>
-      {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -27,8 +25,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link " href="{% static 'Justyna_Fornalik_visualcv_resume.pdf' %}">Resume <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Blog</a>
+        <a class="nav-item nav-link" href="#">Resume <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#">Blog</a>
         <a class="nav-item nav-link" href="#">GitHub</a>
       </div>
     </div>
@@ -36,37 +34,23 @@
     </header>
 
     <main role="main">
-
-      <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Hi! I'm Justyna.</h1>
-          <p class="lead text-muted">Hello! I'm Justyna. I am about to graduate from Codecool Kraków. Aspiring to be a full-stack developer (Python, Django, SQL, Html, CS, Bootstrap). This website is one of my first Django projects. Enjoy!</p>
-          <p>
-            <a href="mailto:jfornalik@gmail.com" class="btn btn-primary my-2">Contact me</a>
-          </p>
-          <img src="{% static 'my_pic.jpg' %}" />
-        </div>
-      </section>
+        <h1 class ="text-center pt-3"> Welcome to my blog</h1>
+        <br />
+        <br />
+        <h2>Latest Posts</h2>
+        <div class="posts">
+        <hr />
 
-      <div class="album py-5 bg-light">
-        <div class="container">
-
-          <div class="row">
-
-              {% for job in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="{{ job.image.url }}"/>
-                <div class="card-body">
-                  <p class="card-text">{{ job.summary}}</p>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-
-          </div>
-        </div>
-      </div>
+        {% for blog in blogs.all %}
+        <a href=""><h3>{{blog.title}}</h3></a>
+        {{blog.make_pub_date_pretty}}
+        <br />
+        <img class="img-fluid" src="{{blog.image.url}}" height=200 width=200 />
+        </ br>
+        <p>{{blog.summary}}</p>
+        {% endfor %}
+    </div>
 
     </main>
 
