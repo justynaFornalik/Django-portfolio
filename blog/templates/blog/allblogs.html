@@ -2,13 +2,13 @@
 <!doctype html>
 <html lang="en">
   <head>
+     {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Album example for Bootstrap</title>
+    <title>Justy's blog</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -19,15 +19,15 @@
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Justyna Fornalik</a>
+    <a class="navbar-brand" href="{% url 'home' %}">Justyna Fornalik</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link" href="#">Resume <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link active" href="#">Blog</a>
-        <a class="nav-item nav-link" href="#">GitHub</a>
+        <a class="nav-item nav-link " href="{% static 'Justyna_Fornalik_visualcv_resume.pdf' %}">Resume <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
+        <a class="nav-item nav-link" href="https://github.com/justynaFornalik">GitHub</a>
       </div>
     </div>
 </nav>
@@ -43,7 +43,7 @@
         <hr />
 
         {% for blog in blogs.all %}
-        <a href=""><h3>{{blog.title}}</h3></a>
+        <a href="{% url 'detail' blog.id %}"><h3>{{blog.title}}</h3></a>
         {{blog.make_pub_date_pretty}}
         <br />
         <img class="img-fluid" src="{{blog.image.url}}" height=200 width=200 />
